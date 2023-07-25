@@ -10,6 +10,7 @@
     font-size: 40px;
     font-weight: 400;
     margin-bottom: 0;
+    text-align: center;
 }
 
 .padLeft {
@@ -17,30 +18,32 @@
 }
 
 .padTop{
-    padding-top: 20px;
+    padding-top: 2vw;
 }
 
+.padBottom{
+    padding-bottom: 2.5vw;
+}
+
+
 .padAllMin{
-    padding: 10px;
+    padding: 2vw;
 }
 
 .padAllMid{
-    padding: 40px;
+    padding: 4vw;
 }
 
 .margAllMid{
-    margin: 40px;
+    margin: 4vw;
 }
 
 .subSub {
     color: black;
     font-family: "Montserrat", Arial, sans-serif;
     font-size: 30px;
-    font-weight: 200;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    font-weight: 300;
+    text-align: center;
 }
 
 .tripleSub{
@@ -48,9 +51,8 @@
     font-family: "Montserrat", Arial, sans-serif;
     font-size: 20px;
     font-weight: 200;
+    text-align: center;
 }
-
-
 
 
 .pageList{
@@ -67,18 +69,16 @@ a{
     color: inherit;
 }
 
-.contrast {
-    text-shadow: 3px 3px 1px var(--color-black);
-}
 .head {
-    font-size: 100px;
+    font-size: 7vw;
     font-family: "Montserrat", Arial, sans-serif;
-    font-weight: 100;
-    color: #ffffff;
-    padding: 20px;
+    font-weight: 300;
+    color: black;
+    padding: 2vw;
+    vertical-align: 50%;
+    text-align: center;
 }
 .secHead {
-    background-color: rgb(0, 0, 0);
     font-family: "Montserrat", Arial, sans-serif;
     color: rgb(255, 255, 255);
     height: 100px;
@@ -93,7 +93,8 @@ a{
 }
 
 .icon{
-  width: 75px;
+    height:1.5vw;
+    vertical-align: middle;
 }
 
 .button {
@@ -118,36 +119,52 @@ a{
 .alignLeft {
     text-align: left;
 }
+.alignCenter{
+    text-align: center;
+}
+
+.inLine{
+    display:inline-block;
+}
 
 .homeBodyText {
     color: gray;
     font-size: 18px;
     font-family: "Times New Roman", Times, serif;
-    text-align: center;
-    padding-bottom: 40px;
 }
+
 .pageBodyText{
     color: gray;
     font-size: 18px;
-    font-weight: 50;
     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: left;
-    padding: 40px;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+}
+
+.pageHeader{
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: black;
+    height: 6vw;
+    color:rgb(255, 255, 255);
+    width:80%;
+}
+
+.pageBody{
+    padding-left: 25%;
+    padding-right: 25%;
 }
 
 ul{
     display:inline-block;
     text-align: left;
- 
+    padding-top:0;
+    margin-top: 0;
+    padding-left:1.25vw;
   }
 
 p{
-    padding-bottom: 0;
-    margin-bottom: 0;
+    text-align: left;
+    display:inline-block;
 }
 
 .table{
@@ -161,31 +178,88 @@ ol{
     
 }
 
-  .myNavItem{
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-bottom: 10px;
-    margin: 0;
-    width: 25vw;
-    font-size: 2vw;
-    
-  }
-
-  .myNavItem:hover{
-    color:#ffffff;
-    background-color: black;
-  }
-
-  .myNavbar{
-    margin: 0;
-    background-color:#ffffff;
-    width: 100%;
-  }
-
-  body{
-    margin:0;
-  }
+.midLine{
+    width: 30%;
+    color: gray;
+}
 
   .slightBold{
     font-weight: 300
   }
+
+  .juniorPic{
+    padding-top: 9.25vw;
+    padding-bottom: 9.25vw;
+    color: #fff;
+    /*background-image: url("../assets/img/51C0AEA2-90D5-4EDA-BC3C-C29B5941F6C9.JPG");*/
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    height: 32vw;
+  }
+
+  body{
+    margin: 0px;
+    padding: 0px;
+  }
+  .homeLink{
+    font-family: "Montserrat", Arial, sans-serif;
+    height: 4vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    width:12%;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .navPages{
+    font-family: "Montserrat", Arial, sans-serif;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    height: 2vw;
+    width:88%;
+    text-align: right;
+    display: inline-block;
+    font-size: 1.5vw;
+    font-weight: 300;
+    vertical-align: middle;
+  }
+  .navPages a{
+    padding-left: 1vw;
+    vertical-align: middle;
+    font-weight: 100;
+  }
+  .logo{
+    width: 50%;
+    display: inline-block;
+    height: 3vw;
+    font-size: 2vw;
+    vertical-align: middle;
+    margin-top: 0.8vw;
+    margin-bottom: 0.5vw;
+    font-weight: 200;
+  }
+  .socialIconsRow{
+    vertical-align: 25%;
+    text-align: center;
+  }
+  .socialIcon{
+    width: 5vw;
+  }
+  h3{
+    padding:0;
+    margin: 0;
+  }
+  p{
+    margin: 0.25vw;
+  }
+  h4{
+    margin: 0;
+  }
+
+  .black{
+    color:black;
+  }
+
