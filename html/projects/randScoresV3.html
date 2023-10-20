@@ -1,0 +1,86 @@
+<!--
+    Zach Bagley
+
+    Section 003
+
+    HW5
+
+    This program prompts the user for the number of teams to work with and names of each team. 
+    It creates an array of teams and a corresponding array of team wins.
+    It iterates through each team and win count to find the team with the most wins.
+    It then displays the results.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mystyles.css " rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,700" rel="stylesheet" type="text/css" />
+    <title>Basketball Scores</title>
+</head>
+<body>
+    <div class="pageHeader"><!--header div-->
+        <nav class="homeLink"><a href="../index.html"><span class="logo" style="color: #B3DC97;">Zach</span><span class="logo" style="color: #DB8C92;">Bagley</span></a><!--link to home--></nav><nav class="navPages"><!--nav to pages-->
+            <a href="/html/Education.html">Education</a>
+            <a href="/html/Experience.html">Experience</a>
+            <a href="/html/Service.html">Service</a>
+            <a href="/html/Skills.html">Skills & Interests</a>
+            <a href="/html/Projects.html">Personal Projects</a>
+        </nav>
+    </div>
+    <script>
+        //determine number of teams based on user input
+        let numTeams = parseInt(prompt('How many teams?'));
+
+        //check if the input is not a number
+        if (isNaN(numTeams)) {
+
+            //display an alert
+            alert("No data to display");
+        } else {
+            //create an array to store teams
+            let teams = new Array(numTeams);
+
+            //name each team based on user input
+            for (let i = 0; i < teams.length; i++){
+                teams[i] = prompt('What is the name of team ' + (i + 1) + '?');
+            }
+
+            //create an array to store wins
+            let teamWins = new Array(numTeams);
+
+            //store win count for each team
+            for (let i = 0; i < teamWins.length; i++){
+                teamWins[i] = Math.floor(Math.random() * 26);
+            }
+
+            //check scores for the highest. variable 'winner' is the position of the winning team's data in each array
+            let winner = 0;
+            for (let i = 0; i < teamWins.length; i++){
+                if (teamWins[i] > teamWins[winner]) {
+                    winner = i;
+                }
+            }
+
+            //calculate losses
+            let teamLosses = new Array(numTeams);
+            for (let i = 0; i < teamLosses.length; i++){
+                teamLosses[i] = (25 - teamWins[i]);
+            }
+
+            //display results
+            alert(teams[winner] + ' had the most wins with a record of ' + teamWins[winner] + '-' + teamLosses[winner]);
+
+            let results;
+            results = (teams[0] + ' ' + teamWins[0] + '-' + teamLosses[0]);
+            for (let i = 1; i < teams.length; i++){
+                results += ('\n' + teams[i] + ' ' + teamWins[i] + '-' + teamLosses[i]);
+            }
+
+            alert(results);
+        }
+
+    </script>
+</body>
+</html>

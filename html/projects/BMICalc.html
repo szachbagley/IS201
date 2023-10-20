@@ -1,0 +1,73 @@
+<!--
+Zach Bagley
+
+Section 003
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mystyles.css " rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,700" rel="stylesheet" type="text/css" />
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <div class="pageHeader"><!--header div-->
+        <nav class="homeLink"><a href="../index.html"><span class="logo" style="color: #B3DC97;">Zach</span><span class="logo" style="color: #DB8C92;">Bagley</span></a><!--link to home--></nav><nav class="navPages"><!--nav to pages-->
+            <a href="/html/Education.html">Education</a>
+            <a href="/html/Experience.html">Experience</a>
+            <a href="/html/Service.html">Service</a>
+            <a href="/html/Skills.html">Skills & Interests</a>
+            <a href="/html/Projects.html">Personal Projects</a>
+        </nav>
+    </div>
+    <script>
+        //prompt user for height and store as heightInput
+        var heightInput = prompt('Please enter your height in feet and inches, separated by a space and with no special characters (if my height were five feet and eleven inches, I would enter: 5 11)');
+        console.log(heightInput);
+
+        //prompt user for weight and store as weightInput
+        var weightInput = prompt('Please enter your weight in pounds');
+        console.log(weightInput);
+
+        //separate user's feet input from inches input
+        var heightValues = heightInput.split(' ');
+        console.log(heightValues);
+
+        //store feet input as heightFeet
+        var heightFeet = heightValues[0];
+        console.log(heightFeet);
+
+        //store inches input as heightInches
+        var heightInches = heightValues[1];
+        console.log(heightInches);
+
+        //calculate total height in inches and store as totalInches
+        var totalInches = (parseInt(heightFeet) * 12) + parseInt(heightInches);
+        console.log(totalInches);
+
+        //calculate BMI
+        var bmi = (weightInput / totalInches / totalInches) * 703;
+        console.log(bmi);
+
+        //determine BMI category
+        if (bmi < 18.5) {
+            bmiCat = 'Underweight';
+        } else if (bmi < 25) {
+            bmiCat = 'Normal weight';
+        } else if (bmi < 30) {
+            bmiCat = 'Overweight';
+        } else {
+            bmiCat = 'Obese';
+        }
+        console.log(bmiCat);
+        
+        //display BMI result
+        alert('Your BMI is ' + bmiCat);;
+
+        //display tips for better health
+        alert('Here are some tips for better health:\nMaintain a Healthy Weight\nIncrease Physical Activity\nEat a Heart-Healthy Diet\nKnow and Control Your Heart Health Numbers');
+    </script>
+</body>
+</html>

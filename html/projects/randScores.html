@@ -1,0 +1,60 @@
+<!--
+Zach Bagley
+Section 003
+
+This program outputs random numbers to represent the scores of
+the BYU and Gonzaga women's basketball teams. It then displays the
+results in an alert box.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mystyles.css " rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,700" rel="stylesheet" type="text/css" />
+    <title>Basketball Scores</title>
+</head>
+<body>
+    <div class="pageHeader"><!--header div-->
+        <nav class="homeLink"><a href="../index.html"><span class="logo" style="color: #B3DC97;">Zach</span><span class="logo" style="color: #DB8C92;">Bagley</span></a><!--link to home--></nav><nav class="navPages"><!--nav to pages-->
+            <a href="/html/Education.html">Education</a>
+            <a href="/html/Experience.html">Experience</a>
+            <a href="/html/Service.html">Service</a>
+            <a href="/html/Skills.html">Skills & Interests</a>
+            <a href="/html/Projects.html">Personal Projects</a>
+        </nav>
+    </div>
+    <script>
+        //variable gonzScore stores Gonzaga's score.
+        //variable brigSCore stores BYU's score
+        //variable winner stores the name of the winning team
+        //variable output store the results text
+        let gonzScore;
+        let brigScore;
+        let winner;
+        let output;
+
+        //generate random scores between 1 and 100
+        gonzScore = Math.floor(Math.random() * 101);
+        brigScore = Math.floor(Math.random() * 101);
+
+        //determine which score is higher and store the winner
+        if (gonzScore == brigScore) {
+            winner = "It's a tie!";
+        } else if (brigScore > gonzScore) {
+            winner = 'BYU wins!';
+        } else {
+            winner = 'Gonazaga wins :(';
+        }
+
+        //store output
+        output = 'BYU: ' + brigScore + '\n' +
+            'Gonzaga: ' + gonzScore + '\n' + '\n' +
+            winner;
+        //display the results
+        alert(output);
+    </script>
+</body>
+</html>

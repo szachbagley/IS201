@@ -1,0 +1,164 @@
+<!--
+    Zach Bagley
+    Section 3
+
+    This program takes a number input from the user. It then plays a virtual game of Yahtzee,
+    "rolling" each die until it lands on the specified number. It then displays the results for
+    the user.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mystyles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,700" rel="stylesheet" type="text/css" />
+    <script>
+        //this array holds counts for each die
+        let counts = new Array(6);
+
+        //this keeps track of total rolls
+        let totalRolls;
+
+        //build a function that will roll the dice
+        function rollTheDice() {
+
+            //initialize some stuff
+            counts  = [0, 0, 0, 0, 0, 0];
+            totalRolls  = 0;
+
+            //set up user input to be used in function
+            let input = parseInt(document.getElementById("num").value);
+
+            //check to see if user entered valid input
+            if ((Number.isInteger(input)) && (input > 0) && (input < 7)){
+
+                //this stores the number on the die for each roll
+                let rollValue;
+
+                //this rolls each dice until rollValue is the user's chosen value.
+                //it uses countRolls() to track how many rolls it takes
+                for (let i = 0; i < 6; i++) {
+                    do {
+                        rollValue = Math.floor(Math.random() * 6) + 1;
+
+                        //call function to iterate count
+                        countRolls(i);
+                        console.log('rollValue: ' + rollValue);
+
+                    } while (rollValue != input);
+
+                    results(i, input);
+                }
+
+                //when it's all over, this displays the final roll count
+                document.getElementById('finalResult').innerHTML = 'Total Rolls: ' + totalRolls;
+                
+                //if the user's input was invalid, tell them to correct it
+            } else {
+                alert('You must enter a whole number from 1 to 6')
+            }
+
+        }
+
+        //function to count the rolls on each die and store to counts array
+        function countRolls(n) {
+            counts[n] = counts[n] + 1;
+            console.log('counts: ' + counts);
+        }
+
+        //function to display image and counter and count total rolls
+        function results(n, x) {
+
+            //this will be used to get the img element to display the appropriate dice image
+            let dieID = 'die' + (n + 1);
+            console.log('ID: ' + dieID);
+
+            //this will be used as the name of the img file
+            let imgName = 'dice' + x + 'Use.jpg';
+            console.log('imgName: ' + imgName);
+
+            //this will be used to get the figcaption element to display each die's roll count
+            let caption = 'die' + (n + 1) + 'cap';
+            console.log('caption: ' + caption);
+
+            //this is the text to display each die's roll count
+            let capText = counts[n] + ' rolls';
+            console.log('capText: ' + capText);
+
+            //this string is the filepath to the appropriate image
+            let srcStr = '/assets/img/' + imgName;
+            console.log('img src filepath: ' + srcStr);
+
+            //this sets the img tag's src to the filepath string
+            document.getElementById(dieID).src = srcStr;
+
+            //this displays the die's roll count beneath the img
+            document.getElementById(caption).innerHTML = capText;
+
+            //update total rolls
+            totalRolls = totalRolls + counts[n];
+            console.log('running total: ' + totalRolls);
+
+            //of of these console logs are just for debugging purposes
+            console.log('\n');
+        }
+    </script>
+    <title>Yahtzee Game</title>
+</head>
+<body>
+    <div class="pageHeader"><!--header div-->
+        <nav class="homeLink"><a href="../index.html"><span class="logo" style="color: #B3DC97;">Zach</span><span class="logo" style="color: #DB8C92;">Bagley</span></a><!--link to home--></nav><nav class="navPages"><!--nav to pages-->
+            <a href="/html/Education.html">Education</a>
+            <a href="/html/Experience.html">Experience</a>
+            <a href="/html/Service.html">Service</a>
+            <a href="/html/Skills.html">Skills & Interests</a>
+            <a href="/html/Projects.html">Projects</a>
+        </nav>
+    </div>
+    <div class="pageBody">
+        <h2 class="subHead alignLeft" style="color: #DB8C92;">
+            Virtual Yahtzee Game
+        </h2>
+        <hr>
+        <label for="'num">
+            <h3 class="subSub slightBold alignLeft">Enter your number</h3>
+            <h3 class="subtitle alignLeft">Must be a whole number between 1 and 6</h3>
+        </label><br>
+        <input type="text" style="width:200px; height:50px; font-size:20px" name="num" id="num"><br><br>
+        <button type="button" style="width:200px; height:50px; font-size:20px" onclick="rollTheDice()">
+            Click to Play!
+        </button><br><br>
+        <div class="diceContainer">
+            <figure>
+                <img src="" id="die1">
+                <figcaption><p class="subSub slightBold alignCenter" id="die1cap"></h3></figcaption>
+            </figure>
+            <figure>
+                <img src="" id="die2">
+                <figcaption><p class="subSub slightBold alignCenter" id="die2cap"></h3></figcaption>
+            </figure>           
+            <figure>
+                <img src="" id="die3">
+                <figcaption><p class="subSub slightBold alignCenter"  id="die3cap"></h3></figcaption>
+            </figure>
+            <figure>
+                <img src="" id="die4">
+                <figcaption><p class="subSub slightBold alignCenter" id="die4cap"></h3></figcaption>
+            </figure>            
+            <figure>
+                <img src="" id="die5">
+                <figcaption><p class="subSub slightBold alignCenter"  id="die5cap"></h3></figcaption>
+            </figure>
+            <figure>
+                <img src="" id="die6">
+                <figcaption><p class="subSub slightBold alignCenter"  id="die6cap"></h3></figcaption>
+            </figure>
+            <br><br>
+            <p class="subSub slightBold alignLeft" id="finalResult"></p>
+        </div>
+        <br><br>
+</body>
+</html>

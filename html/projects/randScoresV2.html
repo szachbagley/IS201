@@ -1,0 +1,94 @@
+<!--
+Zach Bagley
+Section 003
+
+This program outputs random numbers to represent the scores of
+the BYU and Gonzaga women's basketball teams. It then displays the
+results in an alert box.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/mystyles.css " rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,700" rel="stylesheet" type="text/css" />
+    <title>Basketball Scores</title>
+</head>
+<body>
+    <div class="pageHeader"><!--header div-->
+        <nav class="homeLink"><a href="../index.html"><span class="logo" style="color: #B3DC97;">Zach</span><span class="logo" style="color: #DB8C92;">Bagley</span></a><!--link to home--></nav><nav class="navPages"><!--nav to pages-->
+            <a href="/html/Education.html">Education</a>
+            <a href="/html/Experience.html">Experience</a>
+            <a href="/html/Service.html">Service</a>
+            <a href="/html/Skills.html">Skills & Interests</a>
+            <a href="/html/Projects.html">Personal Projects</a>
+        </nav>
+    </div>
+    <script>
+        //variable opScore stores oponent's score.
+        //variable mySCore stores user's team's score
+        //variable myWins stores the number of wins
+        //Variable myLosses stores the number of losses
+        //variable output store the results text
+        //variable numGames store the number of games to play
+        //variable myTeam stores the name of the user's team
+        //variable opTeam stores the name of the opposing team
+        let opScore;
+        let myScore;
+        let myWins = 0;
+        let myLosses = 0;
+        let output;
+        let numGames;
+        let myTeam;
+        let opTeam;
+
+        //prompt for user's team name
+        myTeam = prompt("What is your team's name?");
+
+        //prompt for number of games this season
+        numGames = parseInt(prompt("How many games will " + myTeam + " play this season?"));
+
+        //for loop according to numGames input
+        for(let i = 0; i < numGames; i++){
+            opTeam = prompt("what is the name of the opposing team?")
+            //loop to repeat in case of tie
+            do {
+                 //generate random scores between 1 and 10
+                opScore = Math.floor(Math.random() * 11);
+                myScore = Math.floor(Math.random() * 11);
+            } while (opScore === myScore);
+
+            //iterate wins or losses
+            if (myScore > opScore) {
+                myWins = myWins + 1;
+            } else if (myScore < opScore){
+                myLosses = myLosses + 1;
+            } else {
+                alert('something is wrong with the code');
+            }
+
+            //display game result
+            alert(opTeam + ': ' + opScore + '\n' + myTeam + ': ' + myScore)
+        }
+
+        //determine output
+        if ((parseFloat(myWins) / parseFloat(numGames)) >= 0.75) {
+            output = "NCAA Women's Soccer Tournament";
+        } else if ((parseFloat(myWins) / parseFloat(numGames)) >= 0.5) {
+            output = "Alternate Candidate for Covid";
+        } else {
+            output = "See you next year";
+        }
+
+        //display season results
+        alert(myTeam + ': ' + myWins + '-' +myLosses);
+
+        //display output
+        alert(output);
+
+    </script>
+</body>
+</html>

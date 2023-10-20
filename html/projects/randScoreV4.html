@@ -1,0 +1,79 @@
+<!--Zach Bagley-->
+<!--Section 3-->
+<!--This program takes input for team name and number of games and then computes the results
+of a season-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="/ruxitagentjs_ICA2NVfqru_10275230919171419.js" data-dtconfig="rid=RID_-1476085702|rpid=364883277|domain=byu.edu|reportUrl=https://bf19966hyx.bf.dynatrace.com/bf|app=718d108ceb0c6349|cors=1|featureHash=ICA2NVfqru|vcv=2|rdnt=1|uxrgce=1|bp=3|cuc=lg366a9h|mel=100000|dpvc=1|ssv=4|lastModification=1696435881384|tp=500,50,0,1|agentUri=/ruxitagentjs_ICA2NVfqru_10275230919171419.js"></script><script>
+            function playGame()
+            {
+                var numGames = parseInt(document.getElementById("games").value);
+                var myTeam = document.getElementById("teamName").value;
+                var output = "";
+                let myScore = new Array(numGames);
+                let opScore = new Array(numGames);
+                let overtime = new Array(numGames);
+                let winPCT;
+                let wins = 0;
+                let losses = 0;
+
+
+                //loop thru each game
+                for (let i = 0; i < numGames; i++) {
+                    overtime[i] = 0;
+                    //generate random scores
+                    opScore[i] = Math.floor(Math.random() * 101);
+                    myScore[i] = Math.floor(Math.random() * 101);
+
+                    //add home team advantage
+                    if ((i % 2) === 0) {
+                        myScore[i] = myScore[i] + 5;
+                    } else {
+                        opScore[i] = opScore[i] + 5;
+                    }
+                    //check for tie and go to overtime
+                    while (myScore[i] == opScore[i]) {
+                        opScore[i] = opScore[i] + (Math.floor(Math.random() * 16));
+                        myScore[i] = myScore[i] + (Math.floor(Math.random() * 16));
+                        overtime[i] = overtime[i] + 1;
+                    }
+
+                    //update output and win/loss counters
+                    output = output + myTeam + ': ' + myScore[i] + '-' + opScore[i];
+                    if (overtime[i] > 0) {
+                        output = output + ' with ' + overtime[i] + ' OT';
+                    }
+
+                    if (myScore[i] > opScore[i]){
+                        wins = wins + 1;
+                        output = output + ' and Wins<br>';
+                    } else if (myScore[i] < opScore[i]){
+                        losses = losses + 1;
+                        output = output + ' and Loses<br>';
+                    }
+                }
+
+                //calculate win percentage
+                winPCT = Number((wins / numGames) * 100).toFixed(1);
+
+                //update output
+                output = output + myTeam + "'s record is " + wins + '-' + losses + ' with a winning pct of ' + winPCT +'%';
+            
+                document.getElementById("outputGames").innerHTML = output;
+            }
+        </script>
+
+        <title>
+            Welcome to March Madness
+        </title>
+    </head>
+    <body>
+        Enter your team name: <input type="text" name="teamName" id="teamName"><br><br>
+        Number of games: <input type="text" name="games" id="games"><br><br>
+        <button type="button" onclick="playGame()">Start Season</button><br>
+        <p id="outputGames"></p>
+    </body>
+</html>
