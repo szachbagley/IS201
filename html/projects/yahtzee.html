@@ -7,13 +7,56 @@
     the user.
 -->
 
+<!--
+    At least use:
+
+html label "What number do you want for Yahtzee?"
+html input of text for getting the number
+html button for Click me
+5 image tags for the dice (Do not show the dice when the screen is first displayed - src="")
+html P tag for each of the dice roll counts
+html P tag for the total number of roll counts
+When the user clicks on the Click me button go to a function called rollTheDie.
+
+This function will first check to make sure the number entered in the text box is between 1 and 6. 
+If not, display an error message and set focus back to the input. Assume that the user will always 
+input a number for this assignment.
+
+Otherwise, keep rolling each die and generate a random numbers between 1 and 6. As you do so, keep 
+track of how many times you had to roll that die and also keep a grand total of the number of times
+ all of the dice were rolled.
+
+Once you "roll" the number entered in the text box (i.e. 3) then you display that die image (i.e. dice3Use.jpg) 
+to the id on the html page and also the count of rolls for that die to the id for that dice counter (i.e. dice3Count).
+ Display a message "Dice 3 Rolls = 7" where 7 was the number of rolls for that dice (hint: concatenation dynamically 
+ using the die # in the string - same with the image of the die).
+
+Then continue this process for the rest of the dice.
+
+ 
+
+Once completed display the total number of rolls to the P tag for the total count.
+
+I want you to create a separate function for the rolling of the die, counting the number of rolls, and 
+displaying the die image and die counter and keeping the total count variable.
+
+You should call this function once per die.
+
+Have fun with this and make it look better than the basic screen I displayed in this assignment.
+
+If you do the basic screen you will receive an 85% so make it look professional (add images, color, etc.)
+
+Comments are the same requirements as previous programs
+
+Upload your html file to Learning Suite.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/IS201/css/mystyles.css" rel="stylesheet" />
+    <link href="css/mystyles.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,700" rel="stylesheet" type="text/css" />
     <script>
         //this array holds counts for each die
@@ -59,6 +102,7 @@
                 //if the user's input was invalid, tell them to correct it
             } else {
                 alert('You must enter a whole number from 1 to 6')
+                document.getElementById('num').focus();
             }
 
         }
@@ -89,7 +133,7 @@
             console.log('capText: ' + capText);
 
             //this string is the filepath to the appropriate image
-            let srcStr = '/IS201/assets/img/' + imgName;
+            let srcStr = 'assets/' + imgName;
             console.log('img src filepath: ' + srcStr);
 
             //this sets the img tag's src to the filepath string
@@ -109,17 +153,26 @@
     <title>Yahtzee Game</title>
 </head>
 <body>
-    <body id="page-top">
-        <div class="pageHeader"><!--header div-->
-            <nav class="homeLink"><a href="/IS201/index.html"><span class="logo" style="color: #B3DC97;">Zach</span><span class="logo" style="color: #DB8C92;">Bagley</span></a><!--link to home--></nav><nav class="navPages"><!--nav to pages-->
-                <a href="/IS201/html/Education.html">Education</a>
-                <a href="/IS201/html/Experience.html">Experience</a>
-                <a href="/IS201/html/Service.html">Service</a>
-                <a href="/IS201/html/Skills.html">Skills & Interests</a>
-                <a href="/IS201/html/Projects.html">Projects</a>
-            </nav>
-        </div>
+    <div class="pageHeader"><!--header div-->
+        <nav class="homeLink"><a href="../index.html"><span class="logo" style="color: #B3DC97;">Zach</span><span class="logo" style="color: #DB8C92;">Bagley</span></a><!--link to home--></nav><nav class="navPages"><!--nav to pages-->
+            <a href="/html/Education.html">Education</a>
+            <a href="/html/Experience.html">Experience</a>
+            <a href="/html/Service.html">Service</a>
+            <a href="/html/Skills.html">Skills & Interests</a>
+            <a href="/html/Projects.html">Projects</a>
+        </nav>
+    </div>
     <div class="pageBody">
+        <br>
+        <p>
+            Note: the links in the navigation bar don't work because the folder submitted on Learning
+            Suite doesn't have the files for the other pages; to see this page on the functioning website,
+            visit 
+            <a href="https://szachbagley.github.io/IS201/html/projects/yahtzee.html" style="color: #DB8C92;">
+                szachbagley.github.io/IS201
+            </a>
+        </p>
+        <br>
         <h2 class="subHead alignLeft" style="color: #DB8C92;">
             Virtual Yahtzee Game
         </h2>
@@ -128,7 +181,7 @@
             <h3 class="subSub slightBold alignLeft">Enter your number</h3>
             <h3 class="subtitle alignLeft">Must be a whole number between 1 and 6</h3>
         </label><br>
-        <input type="text" style="width:200px; height:50px; font-size:20px" name="num" id="num"><br><br>
+        <input type="text" style="width:200px; height:50px; font-size:20px" name="num" id="num" autofocus><br><br>
         <button type="button" style="width:200px; height:50px; font-size:20px" onclick="rollTheDice()">
             Click to Play!
         </button><br><br>
